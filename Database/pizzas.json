@@ -1,0 +1,15 @@
+[
+	{
+		"name": "Reine",
+		"size": "MEDIUM",
+		"ingredients": [
+			{
+				"name": "tomate"
+			},
+			{
+				"name": "crème"
+			}
+		],
+		"prices": [ 8, 12.50, 15, 19]
+	}
+]

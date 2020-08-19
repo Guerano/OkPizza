@@ -9,6 +9,7 @@ CONFIG += c++17
 # depend on your compiler). Please consult the documentation of the
 # deprecated API in order to know how to port your code away from it.
 DEFINES += QT_DEPRECATED_WARNINGS
+DEFINES += PROJECT_PATH=\"\\\"$${_PRO_FILE_PWD_}\\\"\"
 
 # You can also make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -17,15 +18,30 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    model/IDatabase.cpp \
+    model/Ingredient.cpp \
+    model/Pizza.cpp \
+    model/database/FileDatabase.cpp \
+    utils/Json.cpp \
+    view/mainwindow.cpp
 
 HEADERS += \
-    mainwindow.hpp
+    model/IDatabase.hpp \
+    model/Ingredient.hpp \
+    model/Pizza.hpp \
+    model/database/FileDatabase.hpp \
+    utils/IJsonSerializable.hpp \
+    utils/Json.hpp \
+    view/mainwindow.hpp
 
 FORMS += \
-    mainwindow.ui
+    view/mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+OTHER_FILES += \
+    Database/ingredients.json \
+    Database/pizzas.json

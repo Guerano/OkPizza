@@ -1,5 +1,7 @@
-#ifndef MAINWINDOW_HPP
-#define MAINWINDOW_HPP
+#pragma once
+
+#include "model/IDatabase.hpp"
+#include "model/database/FileDatabase.hpp"
 
 #include <QMainWindow>
 
@@ -16,6 +18,11 @@ public:
     ~MainWindow();
 
 private:
+    void fillIngredients();
+    void fillPizzas();
+
+private:
     Ui::MainWindow *ui;
+
+    FileDatabase *_db;
 };
-#endif // MAINWINDOW_HPP
