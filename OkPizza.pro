@@ -23,6 +23,8 @@ SOURCES += \
     model/Pizza.cpp \
     model/database/FileDatabase.cpp \
     utils/Json.cpp \
+    view/IngredientsTablePriceDelegate.cpp \
+    view/IngredientsViewer.cpp \
     view/mainwindow.cpp
 
 HEADERS += \
@@ -32,9 +34,12 @@ HEADERS += \
     model/database/FileDatabase.hpp \
     utils/IJsonSerializable.hpp \
     utils/Json.hpp \
+    view/IngredientsTablePriceDelegate.hpp \
+    view/IngredientsViewer.hpp \
     view/mainwindow.hpp
 
 FORMS += \
+    view/IngredientsViewer.ui \
     view/mainwindow.ui
 
 # Default rules for deployment.
