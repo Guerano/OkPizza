@@ -3,51 +3,30 @@
 #include "ui_mainwindow.h"
 
 #include <QDebug>
+#include <QStyleFactory>
+#include <QTouchEvent>
 
 MainWindow::MainWindow(QWidget *parent)
-try : QMainWindow(parent),
-      ui(new Ui::MainWindow),
-      _db(new FileDatabase(PROJECT_PATH "/Database", "ingredients.json", "pizzas.json"))
+    : QMainWindow(parent)
+    , ui(new Ui::MainWindow)
+    , _settings("settings.ini", QSettings::Format::IniFormat, nullptr)
 {
     ui->setupUi(this);
-    QObject::connect(_db, &FileDatabase::ingredientsChanged, this, &MainWindow::fillIngredients);
-    QObject::connect(_db, &FileDatabase::pizzasChanged, this, &MainWindow::fillPizzas);
-}
-catch (QString &error)
-{
-    qDebug() << error;
+
+    QApplication::setStyle(_settings.value("theme", QStyleFactory::keys().first()).toString());
+
+    auto const themes = QStyleFactory::keys();
+    for (auto theme : themes)
+    {
+        auto action = ui->menuThemes->addAction(theme);
+        connect(action, &QAction::triggered, [this, theme]() {
+            QApplication::setStyle(theme);
+            _settings.setValue("theme", theme);
+        });
+    }
 }
 
 MainWindow::~MainWindow()
 {
-    delete _db;
     delete ui;
-}
-
-void MainWindow::fillIngredients()
-{
-    auto comboBoxIngredients = ui->orders->findChild<QComboBox *>("comboBoxIngredients");
-    if (!comboBoxIngredients)
-        throw "Could not find comboBoxIngredients in tab 'order'";
-
-    QStringList ingredientsName;
-    for (auto const &ingredient : _db->ingredients())
-        ingredientsName << ingredient.name();
-
-    comboBoxIngredients->clear();
-    comboBoxIngredients->addItems(ingredientsName);
-}
-
-void MainWindow::fillPizzas()
-{
-    auto comboBoxPizzas = ui->orders->findChild<QComboBox *>("comboBoxPizzas");
-    if (!comboBoxPizzas)
-        throw "Could not find comboBoxPizzas in tab 'order'";
-
-    QStringList pizzasName;
-    for (auto const &pizza : _db->pizzas())
-        pizzasName << pizza.name();
-
-    comboBoxPizzas->clear();
-    comboBoxPizzas->addItems(pizzasName);
 }

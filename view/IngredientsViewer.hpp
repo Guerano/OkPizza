@@ -1,5 +1,7 @@
 #pragma once
 
+#include "../model/database/SqliteDatabase.hpp"
+
 #include <QTableWidgetItem>
 #include <QWidget>
 
@@ -16,11 +18,13 @@ public:
     ~IngredientsViewer();
 
 private slots:
-    void on_ingredientsTableWidget_itemChanged(QTableWidgetItem *item);
-
     void onIngredientsTableRightClick(const QPoint &pos);
+
+    void on_newIngredientAddButton_clicked();
 
 private:
     Ui::IngredientsViewer *ui;
+
+    SqliteDatabase _db;
 };
 

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>793</width>
-    <height>566</height>
+    <width>904</width>
+    <height>656</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -71,7 +71,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>793</width>
+     <width>904</width>
      <height>20</height>
     </rect>
    </property>
@@ -79,6 +79,18 @@
     <property name="title">
      <string>Fichier</string>
     </property>
+    <widget class="QMenu" name="menuSettings">
+     <property name="title">
+      <string>Settings</string>
+     </property>
+     <widget class="QMenu" name="menuThemes">
+      <property name="title">
+       <string>Themes</string>
+      </property>
+     </widget>
+     <addaction name="menuThemes"/>
+    </widget>
+    <addaction name="menuSettings"/>
    </widget>
    <widget class="QMenu" name="menuOutils">
     <property name="title">
@@ -95,6 +107,11 @@
    <addaction name="menuAide"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionTest">
+   <property name="text">
+    <string>Test</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>

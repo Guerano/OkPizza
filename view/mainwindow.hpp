@@ -1,9 +1,7 @@
 #pragma once
 
-#include "model/IDatabase.hpp"
-#include "model/database/FileDatabase.hpp"
-
 #include <QMainWindow>
+#include <QSettings>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -18,11 +16,7 @@ public:
     ~MainWindow();
 
 private:
-    void fillIngredients();
-    void fillPizzas();
-
-private:
     Ui::MainWindow *ui;
 
-    FileDatabase *_db;
+    QSettings _settings;
 };

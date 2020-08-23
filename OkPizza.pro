@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -22,6 +22,7 @@ SOURCES += \
     model/Ingredient.cpp \
     model/Pizza.cpp \
     model/database/FileDatabase.cpp \
+    model/database/SqliteDatabase.cpp \
     utils/Json.cpp \
     view/IngredientsTablePriceDelegate.cpp \
     view/IngredientsViewer.cpp \
@@ -32,6 +33,8 @@ HEADERS += \
     model/Ingredient.hpp \
     model/Pizza.hpp \
     model/database/FileDatabase.hpp \
+    model/database/SqlQueries.hpp \
+    model/database/SqliteDatabase.hpp \
     utils/IJsonSerializable.hpp \
     utils/Json.hpp \
     view/IngredientsTablePriceDelegate.hpp \
